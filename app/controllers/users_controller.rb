@@ -5,9 +5,8 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        user = User.create(params)
-
-        
+        @user = User.create(params)
+        erb :'users/dashboard'
     end
 
 end
