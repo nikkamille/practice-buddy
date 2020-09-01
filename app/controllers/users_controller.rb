@@ -4,4 +4,10 @@ class UsersController < ApplicationController
         erb :'users/signup'
     end
 
+    post '/signup' do
+        user = User.create(params)
+
+        
+    end
+
 end
