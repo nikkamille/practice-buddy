@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200828071704) do
+ActiveRecord::Schema.define(version: 20200903025308) do
+
+  create_table "practice_sessions", force: :cascade do |t|
+    t.date     "date"
+    t.time     "time"
+    t.string   "practice_item"
+    t.string   "duration"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

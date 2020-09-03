@@ -1,4 +1,4 @@
-class CreatePracticeSessions.rb < ActiveRecord::Migration
+class CreatePracticeSessions < ActiveRecord::Migration
   def change
     create_table :practice_sessions do |t|
       t.date :date
