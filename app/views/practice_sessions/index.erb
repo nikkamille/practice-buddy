@@ -1,0 +1,5 @@
+<h4>Take a look at the practice sessions to give you inspiration:</h4><br/>
+
+<% @practice_sessions.each do |ps| %>
+    <p><%= ps.practice_item %></p> <!– unable to add ps.user.username; error: "undefined method `username' –>
+<% end %>
