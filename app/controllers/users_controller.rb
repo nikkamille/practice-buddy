@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     post '/signup' do
         @user = User.create(params)
         session[:user_id] = @user.id
-        erb :'users/dashboard'
+        redirect '/practice-sessions'
     end
 
     get '/login' do
@@ -18,16 +18,15 @@ class UsersController < ApplicationController
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect '/dashboard'
+            redirect '/practice-sessions'
         else
             redirect '/login'
         end
     end
 
-    get '/dashboard' do
-        @user = User.find(session[:user_id])
-        @practice_sessions = PracticeSession.all
-        erb :'users/dashboard'
+    get '/logout' do
+        session.clear
+        redirect '/'
     end
 
 end
