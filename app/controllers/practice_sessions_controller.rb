@@ -28,4 +28,30 @@ class PracticeSessionsController < ApplicationController
         erb :'practice_sessions/show'
     end
 
+    get '/practice-sessions/:id/edit' do
+        @practice_session = PracticeSession.find_by_id(params[:id])
+        if @practice_session.user == current_user
+            erb :'practice_sessions/edit'
+        else
+            redirect '/practice-sessions'
+        end
+    end
+
+    patch '/practice-sessions/:id' do
+        @practice_session = PracticeSession.find_by_id(params[:id])
+        @practice_session.date = params[:date]
+        @practice_session.practice_item = params[:practice_item]
+        @practice_session.duration = params[:duration]
+        @practice_session.notes = params[:notes]
+        if @practice_session.user == current_user
+            if @practice_session.save
+                redirect "/practice-sessions/#{@practice_session.id}"
+            else
+                erb :'practice_sessions/edit'
+            end
+        else
+            redirect '/practice-sessions'
+        end
+    end
+
 end

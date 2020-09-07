@@ -1,1 +1,12 @@
-<h2>Hello World!</h2>
+<b>Practice Item:</b> <%= @practice_session.practice_item %><br/>
+<b>Date:</b> <%= @practice_session.date %><br/>
+<b>Duration:</b> <%= @practice_session.duration %><br/>
+<b>Notes:</b> <%= @practice_session.notes %><br/><br/>
+
+<a href="/practice-sessions/<%= @practice_session.id %>/edit">Edit</a><br/>
+<form action="/practice-sessions/<%= @practice_session.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+</form>
+<br/><br/><a href="/dashboard">Home</a><br/>
+<a href="/logout">Log Out</a>

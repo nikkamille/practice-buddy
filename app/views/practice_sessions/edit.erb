@@ -1,0 +1,13 @@
+<h3>Edit your practice session:</h3>
+<form action="/practice-sessions/<%= @practice_session.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label>Date:</label>
+    <input type="date" name="date" value="<%= @practice_session.date %>"><br/>
+    <label>Practice Items:</label>
+    <input id="textboxid" type="text" name="practice_item" value="<%= @practice_session.practice_item %>"><br/>
+    <label>Duration:</label>
+    <input id="textboxid" type="text" name="duration" value="<%= @practice_session.duration %>"><br/>
+    <label>Notes:</label>
+    <input id="textboxid" type="text" name="notes" value="<%= @practice_session.notes %>"><br/><br/>
+    <input type="submit" value="Submit">
+</form>
