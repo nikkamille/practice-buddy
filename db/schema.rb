@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20200907073938) do
 
   create_table "practice_sessions", force: :cascade do |t|
     t.date     "date"
-    t.time     "time"
     t.string   "practice_item"
     t.string   "duration"
     t.text     "notes"
