@@ -5,6 +5,7 @@ class CreatePracticeSessions < ActiveRecord::Migration
       t.time :time
       t.string :practice_item
       t.string :duration
+      t.text :notes
       t.integer :user_id
       t.timestamps
     end
