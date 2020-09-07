@@ -4,22 +4,28 @@ class PracticeSessionsController < ApplicationController
         erb :'practice_sessions/new'
     end
 
-    post '/practice-sessions/' do
+    post '/practice-sessions' do
         @practice_session = current_user.practice_sessions.build(params)
+        # redirect '/dashboard'
         if @practice_session.save
-            redirect to "/practice-sessions/#{@practice_session.id}"
+            redirect "/practice-sessions/#{@practice_session.id}"
         else
             erb :'practice_sessions/new'
         end
     end
 
     get '/practice-sessions' do
-        erb :'practice_sessions/index'
+        if logged_in?
+            @practice_sessions = PracticeSession.all
+            erb :'practice_sessions/index'
+        else
+            redirect '/login'
+        end 
     end
 
     get '/practice-sessions/:id' do
         @practice_session = PracticeSession.find_by_id(params[:id])
-        erb :show
+        erb :'practice_sessions/show'
     end
 
 end

@@ -1,9 +1,9 @@
 <h2>Hi, <%= current_user.username %>!</h2>
 
-<h4>Take a look at the practice sessions to give you inspiration:</h4><br/>
+<h4>Take a look at these practice sessions to give you inspiration:</h4><br/>
 
 <% @practice_sessions.each do |ps| %>
-    <p><%= ps.practice_item %></p> <!– practiced by ps.user_id –>
+    <p><%= ps.practice_item %> practiced by <%= ps.user.username %></p>
 <% end %>
 
 <a href="/logout">Log Out</a>
