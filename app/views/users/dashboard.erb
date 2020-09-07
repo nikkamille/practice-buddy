@@ -2,12 +2,16 @@
 
     <% if @user.practice_sessions.present? %>
         <h4>Here are your practice sessions:</h4><br/>
+        <ul>
         <% @user.practice_sessions.each do |ps| %>
-            <p><%= ps.practice_item %></p>
+            <li>
+                <a href="/practice-sessions/<%= ps.id %>"><%= ps.practice_item %></a>
+            </li>
         <% end %>
+        </ul>
     <% end %>
 
-    <p><a href="/practice-sessions/new">Add Practice Session</a></p>
+    <br/><p><a href="/practice-sessions/new">Add Practice Session</a></p>
     <p>Not feeling inspired? See everyone's <a href="/practice-sessions">practice sessions</a>.</p>
 
 <a href="/dashboard">Home</a><br/>

@@ -33,7 +33,7 @@ class PracticeSessionsController < ApplicationController
         if @practice_session.user == current_user
             erb :'practice_sessions/edit'
         else
-            redirect '/practice-sessions'
+            redirect '/dashboard'
         end
     end
 
@@ -50,8 +50,16 @@ class PracticeSessionsController < ApplicationController
                 erb :'practice_sessions/edit'
             end
         else
-            redirect '/practice-sessions'
+            redirect '/dashboard'
         end
+    end
+
+    delete '/practice-sessions/:id' do
+        @practice_session = PracticeSession.find_by_id(params[:id])
+        if @practice_session.user == current_user
+            @practice_session.delete
+        end
+        redirect '/dashboard'
     end
 
 end
