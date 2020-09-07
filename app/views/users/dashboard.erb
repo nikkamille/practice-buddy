@@ -1,8 +1,11 @@
 <h2>Hi, <%= current_user.username %>!</h2>
 
-    <% if @user.practice_sessions != "" %>
+    <% if @user.practice_sessions.present? %>
         <h4>Here are your practice sessions:</h4>
         <p><%= @user.practice_sessions.each {|ps| ps.practice_item }  %></p>
     <% end %>
 
-<a href="/logout">Log Out</a>
+    <p><a href="/practice-sessions/new">Add Practice Session</a></p>
+    <p>Not feeling inspired? See everyone's <a href="/practice-sessions">practice sessions</a>.</p>
+
+<p><a href="/logout">Log Out</a></p>
