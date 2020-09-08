@@ -24,12 +24,12 @@ class PracticeSessionsController < ApplicationController
     end
 
     get '/practice-sessions/:id' do
-        @practice_session = PracticeSession.find_by_id(params[:id])
+        get_practice_session
         erb :'practice_sessions/show'
     end
 
     get '/practice-sessions/:id/edit' do
-        @practice_session = PracticeSession.find_by_id(params[:id])
+        get_practice_session
         if @practice_session.user == current_user
             erb :'practice_sessions/edit'
         else
@@ -38,7 +38,7 @@ class PracticeSessionsController < ApplicationController
     end
 
     patch '/practice-sessions/:id' do
-        @practice_session = PracticeSession.find_by_id(params[:id])
+        get_practice_session
         @practice_session.date = params[:date]
         @practice_session.practice_item = params[:practice_item]
         @practice_session.duration = params[:duration]
@@ -55,11 +55,15 @@ class PracticeSessionsController < ApplicationController
     end
 
     delete '/practice-sessions/:id' do
-        @practice_session = PracticeSession.find_by_id(params[:id])
+        get_practice_session
         if @practice_session.user == current_user
             @practice_session.delete
         end
         redirect '/dashboard'
+    end
+
+    def get_practice_session
+        @practice_session = PracticeSession.find_by_id(params[:id])
     end
 
 end
