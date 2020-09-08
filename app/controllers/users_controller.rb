@@ -29,7 +29,11 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect '/dashboard'
         else
-            redirect '/failure'
+            @failed_login = true
+            if !@user
+                @user = User.new
+            end
+            erb :'users/login'
         end
     end
 
