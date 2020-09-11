@@ -4,7 +4,7 @@ Practice Buddy is a web application for logging practice sessions. You can creat
 
 ## Installation
 
-To install Practice Buddy, go to [GitHub](https://github.com/nikkamille/practice-buddy) and clone the Practice Buddy repository.
+To install Practice Buddy, go to GitHub and clone the [Practice Buddy repository](https://github.com/nikkamille/practice-buddy).
 
 On your terminal, run the following commands:
 
